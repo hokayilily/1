@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>圍村食桌 · 圍頭話保育</title>
+    <!-- Font Awesome 6 (免費) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google 字體 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Noto+Serif+TC:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #FDF8F0;  /* 米白/奶油底色 */
+            color: #3E3A36;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* 導航 (極簡) */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(253, 248, 240, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 100;
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(196, 90, 50, 0.15);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+        }
+
+        .logo a {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: #C45A32;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #3E3A36;
+            font-weight: 500;
+            font-size: 1.05rem;
+            transition: color 0.2s;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 4px;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #C45A32;
+            border-bottom-color: #C45A32;
+        }
+
+        /* 行動呼籲按鈕 */
+        .btn {
+            display: inline-block;
+            background-color: #C45A32;
+            color: white;
+            font-weight: 500;
+            padding: 12px 32px;
+            border-radius: 40px;
+            text-decoration: none;
+            transition: background-color 0.2s, transform 0.1s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 12px rgba(196, 90, 50, 0.3);
+        }
+
+        .btn:hover {
+            background-color: #a84828;
+            transform: scale(1.02);
+        }
+
+        .btn-small {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+            box-shadow: none;
+        }
+
+        /* 首屏 Hero */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1601050690597-df0568f7095c?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+            /*  unsplash 盆菜風格圖片  */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            margin-bottom: 60px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.8rem;
+            font-weight: 300;
+            text-shadow: 1px 1px 8px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            color: white;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);}
+            40% {transform: translateX(-50%) translateY(-20px);}
+            60% {transform: translateX(-50%) translateY(-10px);}
+        }
+
+        /* 引言區 */
+        .intro-section {
+            text-align: center;
+            max-width: 800px;
+            margin: 100px auto 80px;
+            padding: 0 20px;
+        }
+
+        .intro-section h2 {
+            font-size: 2.5rem;
+            color: #C45A32;
+            margin-bottom: 25px;
+        }
+
+        .intro-section .quote {
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: #5e5a56;
+            border-left: 4px solid #C45A32;
+            padding-left: 30px;
+            text-align: left;
+            background: rgba(196, 90, 50, 0.03);
+            padding: 30px;
+            border-radius: 20px;
+        }
+
+        .flavor-icons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .flavor-icons i {
+            font-size: 2.5rem;
+            color: #7A9E7E;
+            background: white;
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+            transition: 0.2s;
+        }
+
+        .flavor-icons i:hover {
+            transform: scale(1.1);
+            color: #C45A32;
+        }
+
+        /* 分類卡片 (節慶/家常/小食) */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 60px 0;
+        }
+
+        .category-card {
+            position: relative;
+            height: 280px;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .category-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .category-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 25px;
+            color: white;
+        }
+
+        .category-overlay h3 {
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 5px black;
+        }
+
+        .category-overlay p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* 盆菜專區 */
+        .section-title {
+            font-size: 2.8rem;
+            color: #3E3A36;
+            margin: 80px 0 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: #C45A32;
+        }
+
+        .pun-choi-area {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            background: #f7efe5;
+            border-radius: 40px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        .pun-choi-layers {
+            flex: 1.2;
+            min-width: 280px;
+        }
+
+        .layer-diagram {
+            background: #fff1e4;
+            border-radius: 60px 60px 20px 20px;
+            padding: 20px 20px 30px;
+            box-shadow: inset 0 -5px 0 #c45a3230;
+        }
+
+        .layer-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            margin: 8px 0;
+            background: white;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.2s;
+            border: 1px solid #eee;
+        }
+
+        .layer-item:hover {
+            background: #C45A32;
+            color: white;
+            transform: translateX(8px);
+        }
+
+        .layer-icon {
+            width: 30px;
+            height: 30px;
+            background: #C45A32;
+            color: white;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        .layer-name {
+            font-weight: 500;
+            flex: 1;
+        }
+
+        .layer-meaning {
+            color: #7A9E7E;
+            font-size: 0.9rem;
+        }
+
+        .pun-choi-desc {
+            flex: 1;
+            min-width: 260px;
+        }
+
+        .food-pronounce {
+            background: white;
+            padding: 20px;
+            border-radius: 30px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 5px 15px #eee;
+        }
+
+        .sound-btn {
+            background: #C45A32;
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .sound-btn:hover {
+            background: #a84828;
+            transform: scale(1.1);
+        }
+
+        /* 茶果卡片牆 */
+        .snack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 25px;
+            margin: 50px 0;
+        }
+
+        .snack-card {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: 0.25s;
+            cursor: pointer;
+        }
+
+        .snack-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(196, 90, 50, 0.12);
+        }
+
+        .snack-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .snack-info {
+            padding: 18px;
+            position: relative;
+        }
+
+        .snack-name {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .snack-pronounce {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #7A9E7E;
+            font-size: 0.9rem;
+        }
+
+        .small-sound {
+            background: #f0e4d8;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #C45A32;
+            cursor: pointer;
+        }
+
+        /* 家常菜網格 */
+        .daily-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .dish-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 18px #f0e4d8;
+        }
+
+        .dish-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .dish-info {
+            padding: 20px;
+        }
+
+        .dish-info h4 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+
+        .dish-tip {
+            color: #7A9E7E;
+            font-size: 0.9rem;
+            margin: 8px 0;
+        }
+
+        .mini-sound {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #C45A32;
+            cursor: pointer;
+        }
+
+        /* 橫向滑動小食區 */
+        .snack-scroll {
+            overflow-x: auto;
+            display: flex;
+            gap: 20px;
+            padding: 20px 0 30px;
+            scrollbar-width: thin;
+            scrollbar-color: #C45A32 #f7e2d4;
+        }
+
+        .snack-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+        .snack-scroll::-webkit-scrollbar-thumb {
+            background: #C45A32;
+            border-radius: 10px;
+        }
+
+        .scroll-item {
+            flex: 0 0 240px;
+            background: white;
+            border-radius: 25px;
+            padding: 20px;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.05);
+        }
+
+        .scroll-item img {
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+
+        /* 發音字典卡片牆 */
+        .dict-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .dict-item {
+            background: white;
+            border-radius: 20px;
+            padding: 15px 8px;
+            text-align: center;
+            box-shadow: 0 4px 10px #f0e0d0;
+            transition: 0.15s;
+        }
+
+        .dict-item:hover {
+            background: #C45A32;
+            color: white;
+        }
+
+        .dict-item:hover .dict-pronounce {
+            color: #ffe7d0;
+        }
+
+        .dict-pronounce {
+            font-size: 0.85rem;
+            color: #7A9E7E;
+            margin: 5px 0;
+        }
+
+        .dict-sound {
+            margin-top: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        /* 食譜下載區 */
+        .recipe-section {
+            background: #fff9f2;
+            border-radius: 50px;
+            padding: 50px;
+            margin: 70px 0;
+            background-image: radial-gradient(circle at 10% 30%, rgba(196,90,50,0.03) 0%, transparent 30%);
+        }
+
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .recipe-card {
+            background: white;
+            border-radius: 30px;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .download-btn {
+            background: #C45A32;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 40px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        /* 影片區 */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .video-card {
+            border-radius: 30px;
+            overflow: hidden;
+            background: #2d2a27;
+            aspect-ratio: 16/9;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .video-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+            transition: 0.3s;
+        }
+
+        .video-card:hover img {
+            opacity: 0.5;
+            transform: scale(1.02);
+        }
+
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: white;
+            text-shadow: 0 2px 10px black;
+        }
+
+        /* 結尾 */
+        .closing {
+            text-align: center;
+            padding: 80px 20px;
+            background: #3E3A36;
+            color: white;
+            border-radius: 60px 60px 0 0;
+            margin-top: 60px;
+        }
+
+        .closing h2 {
+            font-size: 2.8rem;
+            color: #FDF8F0;
+        }
+
+        .closing .btn {
+            margin-top: 30px;
+            background: #FDF8F0;
+            color: #3E3A36;
+        }
+
+        /* toast 提示 (模擬發音回饋) */
+        .toast-msg {
+            visibility: hidden;
+            min-width: 200px;
+            background: #3E3A36;
+            color: #fff;
+            text-align: center;
+            border-radius: 50px;
+            padding: 12px 24px;
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 200;
+            opacity: 0;
+            transition: opacity 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .toast-msg.show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        footer {
+            background: #2d2a27;
+            color: #aaa;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* 響應式 */
+        @media (max-width: 1000px) {
+            .category-grid { grid-template-columns: 1fr; }
+            .daily-grid { grid-template-columns: 1fr 1fr; }
+            .dict-grid { grid-template-columns: repeat(3,1fr); }
+            .recipe-grid { grid-template-columns: 1fr; }
+            .video-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 600px) {
+            .navbar { padding: 12px 20px; }
+            .nav-links { gap: 1rem; }
+            .hero h1 { font-size: 2.8rem; }
+            .hero p { font-size: 1.2rem; }
+            .daily-grid { grid-template-columns: 1fr; }
+            .dict-grid { grid-template-columns: 1fr 1fr; }
+            .container { padding: 0 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 固定導航 -->
+    <nav class="navbar">
+        <div class="logo"><a href="#">圍村食桌</a></div>
+        <div class="nav-links">
+            <a href="#">圍頭話</a>
+            <a href="#">圍村歷史</a>
+            <a href="#">圍頭地圖</a>
+            <a href="#" class="active">圍村美食</a>
+        </div>
+    </nav>
+
+    <!-- 首屏 Hero -->
+    <section class="hero" id="top">
+        <div class="hero-content">
+            <h1>圍村食桌<br>舌尖上的宗族記憶</h1>
+            <p>一盤盆菜，一籠茶果，一代人的手藝與味道</p>
+        </div>
+        <div class="scroll-down"><i class="fas fa-chevron-down"></i></div>
+    </section>
+
+    <div class="container">
+
+        <!-- 引言區 -->
+        <section class="intro-section">
+            <h2>艾草的苦，雞屎藤的清香</h2>
+            <div class="quote">
+                「這些味道，城市裡找不到。它們只藏在圍村的廚房裡，藏在阿婆的手藝裡，藏在幾百年來每一個祭祖、團圓、豐收的日子裡。」
+            </div>
+            <div class="flavor-icons">
+                <i class="fas fa-utensils"></i>
+                <i class="fas fa-leaf"></i>
+                <i class="fas fa-drumstick-bite"></i>
+                <i class="fas fa-mortar-pestle"></i>
+            </div>
+        </section>
+
+        <!-- 美食分類導航卡片 (節慶/家常/小食) -->
+        <div class="category-grid">
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1626197031507-c1700f09f7ad?q=80&w=1974&auto=format&fit=crop" alt="盆菜">
+                <div class="category-overlay">
+                    <h3>節慶之味</h3>
+                    <p>祭祖·團圓·豐收 —— 宗族的日子</p>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1581075411249-0d9c3d3d6b6f?q=80&w=1974&auto=format&fit=crop" alt="家常菜">
+                <div class="category-overlay">
+                    <h3>家常之味</h3>
+                    <p>圍村人的一日三餐，田邊的日常</p>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1601494531612-31bc67c02d98?q=80&w=1974&auto=format&fit=crop" alt="茶果">
+                <div class="category-overlay">
+                    <h3>小食之味</h3>
+                    <p>田埂上的零嘴，阿婆的手工</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 節慶之味：盆菜專區 -->
+        <h2 class="section-title">盆菜 · 七層團結</h2>
+        <div class="pun-choi-area">
+            <div class="pun-choi-layers">
+                <div class="layer-diagram">
+                    <div class="layer-item" data-layer="1">
+                        <span class="layer-icon">1</span>
+                        <span class="layer-name">蘿蔔、豬皮</span>
+                        <span class="layer-meaning">吸收肉汁·根基</span>
+                    </div>
+                    <div class="layer-item" data-layer="2">
+                        <span class="layer-icon">2</span>
+                        <span class="layer-name">枝竹、魷魚</span>
+                        <span class="layer-meaning">口感層次</span>
+                    </div>
+                    <div class="layer-item" data-layer="3">
+                        <span class="layer-icon">3</span>
+                        <span class="layer-name">炆豬肉</span>
+                        <span class="layer-meaning">宗族共食</span>
+                    </div>
+                    <div class="layer-item" data-layer="4">
+                        <span class="layer-icon">4</span>
+                        <span class="layer-name">冬菇</span>
+                        <span class="layer-meaning">珍貴食材</span>
+                    </div>
+                    <div class="layer-item" data-layer="5">
+                        <span class="layer-icon">5</span>
+                        <span class="layer-name">雞</span>
+                        <span class="layer-meaning">祭祀吉祥</span>
+                    </div>
+                    <div class="layer-item" data-layer="6">
+                        <span class="layer-icon">6</span>
+                        <span class="layer-name">蝦</span>
+                        <span class="layer-meaning">海味代表</span>
+                    </div>
+                    <div class="layer-item" data-layer="7">
+                        <span class="layer-icon">7</span>
+                        <span class="layer-name">鮑魚/蠔豉</span>
+                        <span class="layer-meaning">豐盛之最</span>
+                    </div>
+                </div>
+            </div>
+            <div class="pun-choi-desc">
+                <div class="food-pronounce">
+                    <div class="sound-btn" data-word="盆菜"><i class="fas fa-volume-up"></i></div>
+                    <div><strong>圍頭話：</strong> bun1 coi3  <span style="color:#C45A32; margin-left:10px;">(點擊喇叭聆聽)</span></div>
+                </div>
+                <p style="margin:20px 0 10px;">📜 起源傳說：一說南宋少帝南逃，村民以僅存食材共煮一鍋；一說文天祥被追，村民以大木盆盛菜招待。</p>
+                <p>🍚 何時吃：祠堂祭祖、新春團拜、嫁娶喜宴、太平清醮。</p>
+                <p>💡 小知識：傳統盆菜不用金屬鍋，避免影響風水；食盆菜要由頂層往下，象徵長幼有序。</p>
+            </div>
+        </div>
+
+        <!-- 茶果卡片牆 -->
+        <h2 class="section-title" style="margin-top:70px;">茶果 · 清明記憶</h2>
+        <div class="snack-grid">
+            <div class="snack-card">
+                <img src="https://images.unsplash.com/photo-1624686496110-d54507b0c0d0?q=80&w=1974&auto=format&fit=crop" alt="雞屎藤茶果">
+                <div class="snack-info">
+                    <div class="snack-name">雞屎藤茶果</div>
+                    <div class="snack-pronounce">
+                        <span>gai1 si2 tang4 caa4 gwo2</span>
+                        <span class="small-sound" data-word="雞屎藤茶果"><i class="fas fa-volume-down"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="snack-card">
+                <img src="https://images.unsplash.com/photo-1598875706250-21faaf804361?q=80&w=1974&auto=format&fit=crop" alt="艾餅">
+                <div class="snack-info">
+                    <div class="snack-name">艾餅</div>
+                    <div class="snack-pronounce">
+                        <span>ngaai6 beng2</span>
+                        <span class="small-sound" data-word="艾餅"><i class="fas fa-volume-down"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="snack-card">
+                <img src="https://images.unsplash.com/photo-1621852017135-7d6a002a2e3f?q=80&w=1974&auto=format&fit=crop" alt="茶粿">
+                <div class="snack-info">
+                    <div class="snack-name">茶粿(花生)</div>
+                    <div class="snack-pronounce">
+                        <span>caa4 gwo2</span>
+                        <span class="small-sound" data-word="茶粿"><i class="fas fa-volume-down"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="snack-card">
+                <img src="https://images.unsplash.com/photo-1621852017135-7d6a002a2e3f?q=80&w=1974&auto=format&fit=crop" alt="鬆糕">
+                <div class="snack-info">
+                    <div class="snack-name">鬆糕</div>
+                    <div class="snack-pronounce">
+                        <span>sung1 gou1</span>
+                        <span class="small-sound" data-word="鬆糕"><i class="fas fa-volume-down"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 家常之味網格 -->
+        <h2 class="section-title">家常 · 一日三餐</h2>
+        <div class="daily-grid">
+            <div class="dish-card">
+                <img src="https://images.unsplash.com/photo-1605829268454-56e3c37a5ce9?q=80&w=1974&auto=format&fit=crop" alt="黃皮醬燜鴨">
+                <div class="dish-info">
+                    <h4>黃皮醬燜鴨 <span style="font-size:0.8rem; font-weight:normal;">wong4 pei2 zoeng3 man6 aap3</span></h4>
+                    <div class="dish-tip">每家一棵黃皮樹，夏日酸甜入饌</div>
+                    <div class="mini-sound" data-word="黃皮醬燜鴨"><i class="fas fa-volume-up"></i> 聽發音</div>
+                </div>
+            </div>
+            <div class="dish-card">
+                <img src="https://images.unsplash.com/photo-1624726175513-19c4bafb2b7a?q=80&w=1974&auto=format&fit=crop" alt="鹹菜炆豬肉">
+                <div class="dish-info">
+                    <h4>鹹菜炆豬肉 <span style="font-size:0.8rem;">haam4 coi3 man6 zyu1 juk6</span></h4>
+                    <div class="dish-tip">鹹菜自家醃製，炆至軟爛</div>
+                    <div class="mini-sound" data-word="鹹菜炆豬肉"><i class="fas fa-volume-up"></i> 聽發音</div>
+                </div>
+            </div>
+            <div class="dish-card">
+                <img src="https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=1974&auto=format&fit=crop" alt="老火湯">
+                <div class="dish-info">
+                    <h4>老火湯 <span style="font-size:0.8rem;">lou5 fo2 tong1</span></h4>
+                    <div class="dish-tip">粉葛鯪魚、花生雞腳——日日不同</div>
+                    <div class="mini-sound" data-word="老火湯"><i class="fas fa-volume-up"></i> 聽發音</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 橫向滑動小食區 -->
+        <h2 class="section-title">田埂上的零嘴</h2>
+        <div class="snack-scroll">
+            <div class="scroll-item">
+                <img src="https://images.unsplash.com/photo-1624686496110-d54507b0c0d0?q=80&w=1974&auto=format&fit=crop" alt="雞屎藤">
+                <h4>雞屎藤茶果</h4>
+                <p>清明前後 · 清香驅蟲</p>
+                <div class="small-sound" data-word="雞屎藤茶果" style="margin-top:10px;"><i class="fas fa-volume-down"></i> 圍頭話</div>
+            </div>
+            <div class="scroll-item">
+                <img src="https://images.unsplash.com/photo-1598875706250-21faaf804361?q=80&w=1974&auto=format&fit=crop" alt="艾餅">
+                <h4>艾餅</h4>
+                <p>清明 · 艾草揉入</p>
+                <div class="small-sound" data-word="艾餅" style="margin-top:10px;"><i class="fas fa-volume-down"></i> 圍頭話</div>
+            </div>
+            <div class="scroll-item">
+                <img src="https://images.unsplash.com/photo-1621852017135-7d6a002a2e3f?q=80&w=1974&auto=format&fit=crop" alt="茶粿">
+                <h4>花生茶粿</h4>
+                <p>祠堂前的零嘴</p>
+                <div class="small-sound" data-word="茶粿" style="margin-top:10px;"><i class="fas fa-volume-down"></i> 圍頭話</div>
+            </div>
+            <div class="scroll-item">
+                <img src="https://images.unsplash.com/photo-1601494531612-31bc67c02d98?q=80&w=1974&auto=format&fit=crop" alt="糖不甩">
+                <h4>糖不甩</h4>
+                <p>冬日 · 薑糖驅寒</p>
+                <div class="small-sound" data-word="糖不甩" style="margin-top:10px;"><i class="fas fa-volume-down"></i> 圍頭話</div>
+            </div>
+        </div>
+
+        <!-- 發音字典卡片牆 -->
+        <h2 class="section-title">圍頭話 · 食物發音字典</h2>
+        <div class="dict-grid">
+            <div class="dict-item">盆菜<div class="dict-pronounce">bun1 coi3</div><div class="dict-sound" data-word="盆菜"><i class="fas fa-volume-up"></i></div></div>
+            <div class="dict-item">雞屎藤茶果<div class="dict-pronounce">gai1 si2 tang4 caa4 gwo2</div><div class="dict-sound" data-word="雞屎藤茶果"><i class="fas fa-volume-up"></i></div></div>
+            <div class="dict-item">艾餅<div class="dict-pronounce">ngaai6 beng2</div><div class="dict-sound" data-word="艾餅"><i class="fas fa-volume-up"></i></div></div>
+            <div class="dict-item">茶粿<div class="dict-pronounce">caa4 gwo2</div><div class="dict-sound" data-word="茶粿"><i class="fas fa-volume-up"></i></div></div>
+            <div class="dict-item">鬆糕<div class="dict-pronounce">sung1 gou1</div><div class="dict-sound" data-word="鬆糕"><i class="fas fa-volume-up"></i></div></div>
+            <div class="dict-item">發糕<div class="dict-pronounce">faat3 gou1</div><div class="dict-sound" data-word="發糕"><i class="fas fa-volume-up"></i></div></div>
+            <div class="dict-item">黃皮醬燜鴨<div class="dict-pronounce">wong4 pei2 zoeng3 man6 aap3</div><div class="dict-sound" data-word="黃皮醬燜鴨"><i class="fas fa-volume-up"></i></div></div>
+            <div class="dict-item">雞<div class="dict-pronounce">gai1</div><div class="dict-sound" data-word="雞"><i class="fas fa-volume-up"></i></div></div>
+            <div class="dict-item">魚<div class="dict-pronounce">jyu4</div><div class="dict-sound" data-word="魚"><i class="fas fa-volume-up"></i></div></div>
+            <div class="dict-item">湯<div class="dict-pronounce">tong1</div><div class="dict-sound" data-word="湯"><i class="fas fa-volume-up"></i></div></div>
+        </div>
+
+        <!-- 食譜下載區 -->
+        <div class="recipe-section">
+            <h2 style="font-size:2.5rem; margin-bottom:30px;">阿婆的私房食譜</h2>
+            <div class="recipe-grid">
+                <div class="recipe-card"><span><i class="fas fa-utensil-spoon" style="color:#C45A32;"></i> 阿婆的盆菜秘方 (8頁)</span> <button class="download-btn" data-recipe="盆菜">下載PDF</button></div>
+                <div class="recipe-card"><span><i class="fas fa-leaf" style="color:#7A9E7E;"></i> 傳統雞屎藤茶果 (4頁)</span> <button class="download-btn" data-recipe="雞屎藤">下載PDF</button></div>
+                <div class="recipe-card"><span><i class="fas fa-drumstick-bite" style="color:#C45A32;"></i> 黃皮醬燜鴨食譜 (3頁)</span> <button class="download-btn" data-recipe="黃皮鴨">下載PDF</button></div>
+                <div class="recipe-card"><span><i class="fas fa-mug-hot" style="color:#7A9E7E;"></i> 圍村家常湯水合集 (12頁)</span> <button class="download-btn" data-recipe="湯水">下載PDF</button></div>
+            </div>
+            <p style="margin-top:30px; font-style:italic;">「整多啲，食多啲，唔好俾佢失傳。」—— 圍村阿婆</p>
+        </div>
+
+        <!-- 影片區 -->
+        <h2 class="section-title">看見 · 食物的誕生</h2>
+        <div class="video-grid">
+            <div class="video-card">
+                <img src="https://images.unsplash.com/photo-1626197031507-c1700f09f7ad?q=80&w=1974&auto=format&fit=crop" alt="盆菜影片">
+                <div class="play-icon"><i class="fas fa-play-circle"></i></div>
+                <div style="position:absolute; bottom:10px; left:15px; color:white; font-weight:500;">阿婆的盆菜 · 3:24</div>
+            </div>
+            <div class="video-card">
+                <img src="https://images.unsplash.com/photo-1601494531612-31bc67c02d98?q=80&w=1974&auto=format&fit=crop" alt="茶果影片">
+                <div class="play-icon"><i class="fas fa-play-circle"></i></div>
+                <div style="position:absolute; bottom:10px; left:15px; color:white; font-weight:500;">清明採艾 · 2:56</div>
+            </div>
+            <div class="video-card">
+                <img src="https://images.unsplash.com/photo-1605829268454-56e3c37a5ce9?q=80&w=1974&auto=format&fit=crop" alt="祠堂盆菜宴">
+                <div class="play-icon"><i class="fas fa-play-circle"></i></div>
+                <div style="position:absolute; bottom:10px; left:15px; color:white; font-weight:500;">祠堂前的盤菜宴 · 4:12</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 結尾區 -->
+    <section class="closing">
+        <h2>圍村的味道，還在灶頭上冒煙</h2>
+        <p style="max-width:600px; margin:20px auto; opacity:0.8;">你也嘗過嗎？或者，你的阿婆也有私房食譜？</p>
+        <a href="#" class="btn" style="background:#FDF8F0; color:#3E3A36;">分享你的圍村味道</a>
+        <div style="margin-top: 40px;">
+            <i class="fas fa-heart" style="color:#C45A32;"></i> 收藏這張食桌
+    </div>
+    </section>
+
+    <footer>
+        © 2025 圍頭話保育網站 · 香港中文大學歷史系
+    </footer>
+
+    <!-- 自訂 Toast 提示 -->
+    <div id="toast" class="toast-msg">🔊 播放圍頭話發音 (模擬)</div>
+
+    <script>
+        (function(){
+            // 簡單的toast提示，代替真實音檔
+            const toast = document.getElementById('toast');
+
+            function showToast(word) {
+                toast.textContent = `🔊 圍頭話發音： ${word} (模擬)`;
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 1500);
+            }
+
+            // 綁定所有發音按鈕 (包含 .sound-btn, .small-sound, .mini-sound, .dict-sound)
+            const soundButtons = document.querySelectorAll('.sound-btn, .small-sound, .mini-sound, .dict-sound');
+            soundButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    // 嘗試從 data-word 取得食物名，若無則找父層的文字
+                    let word = btn.getAttribute('data-word');
+                    if (!word) {
+                        // 找父層內的 .snack-name 或相鄰文字
+                        const parent = btn.closest('.snack-card, .dish-card, .scroll-item, .dict-item, .pun-choi-desc');
+                        if (parent) {
+                            const nameEl = parent.querySelector('.snack-name, h4, .dict-item');
+                            word = nameEl ? nameEl.innerText.trim() : '食物';
+                        } else {
+                            word = '食物';
+                        }
+                    }
+                    showToast(word);
+                });
+            });
+
+            // 食譜下載按鈕模擬
+            const downloadBtns = document.querySelectorAll('.download-btn');
+            downloadBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const recipe = btn.getAttribute('data-recipe') || '食譜';
+                    alert(`📥 下載模擬：${recipe}食譜.pdf (實際上下載功能可串接下載連結)`);
+                });
+            });
+
+            // 影片卡片點擊模擬
+            const videoCards = document.querySelectorAll('.video-card');
+            videoCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    alert('🎬 模擬播放影片 (此為示意，實際可嵌入YouTube/Vimeo)');
+                });
+            });
+
+            // 盆菜層懸停效果（原本已有，額外可加入點擊顯示對應說明）
+            const layerItems = document.querySelectorAll('.layer-item');
+            layerItems.forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    const layerName = item.querySelector('.layer-name')?.innerText || `第${index+1}層`;
+                    showToast(`盆菜：${layerName}`);
+                });
+            });
+
+            // 向下箭頭滾動
+            document.querySelector('.scroll-down').addEventListener('click', ()=>{
+                window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+            });
+
+        })();
+    </script>
+</body>
+</html>
